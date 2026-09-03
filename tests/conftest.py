@@ -21,7 +21,7 @@ from app.db.session import get_session
 from app.main import app
 
 TEST_DATABASE_URL = os.environ.get(
-    "TEST_DATABASE_URL", "postgresql+psycopg:///fedac_test"
+    "TEST_DATABASE_URL", "postgresql+psycopg:///abcd_test"
 )
 
 

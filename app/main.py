@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api import passengers
 
-app = FastAPI(title="fedac")
+app = FastAPI(title="abcd")
 
 _allowed_origins = os.environ.get("CORS_ALLOWED_ORIGINS", "http://localhost:5173").split(",")
 app.add_middleware(

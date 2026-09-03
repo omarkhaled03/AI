@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/omarkhaled/Projects/fedac/.venv-run"
+set -gx VIRTUAL_ENV "/Users/omarkhaled/Projects/abcd/.venv-run"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
