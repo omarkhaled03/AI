@@ -51,9 +51,11 @@ export function PassengerListPage() {
 
   return (
     <div className={styles.container}>
-      <h1>Passengers</h1>
+      <h1 className={styles.title}>Passengers</h1>
       <p>
-        <Link to="/passengers/new">Create a new passenger</Link>
+        <Link to="/passengers/new" className={styles.createLink}>
+          Create a new passenger
+        </Link>
       </p>
 
       <form className={styles.searchBar} onSubmit={handleSearchSubmit}>
@@ -92,7 +94,16 @@ export function PassengerListPage() {
                 <td>{passenger.date_of_birth}</td>
                 <td>{passenger.email}</td>
                 <td>
-                  {passenger.government_id_type}: {passenger.government_id_number}
+                  <span
+                    className={`${styles.idBadge} ${
+                      passenger.government_id_type === 'passport'
+                        ? styles.idBadgePassport
+                        : styles.idBadgeNationalId
+                    }`}
+                  >
+                    {passenger.government_id_type}
+                  </span>{' '}
+                  {passenger.government_id_number}
                 </td>
               </tr>
             ))}

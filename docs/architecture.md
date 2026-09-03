@@ -24,6 +24,24 @@
 - **Every new backend resource/feature ships with a corresponding UI**: at minimum, a page to create a record (form matching the resource's required/optional fields and validation) and a page/view to list and search existing records, mirroring the resource's API endpoints. A feature is not complete until both the API and its UI exist.
 - **Testing**: component/page tests with Vitest + React Testing Library, mirroring `frontend/src/` structure under `frontend/tests/`, following the same `test_<behavior>_<condition>`-style naming intent as the backend's pytest convention.
 
+## Design & color standard (Apple HIG-inspired)
+
+All UI work follows Apple's [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines) for color, type, and spacing. Tokens are defined once as CSS custom properties in `frontend/src/index.css` and consumed everywhere else — never hardcode a hex color in a component's CSS module.
+
+- **System color palette** — Apple's system colors, used semantically rather than decoratively:
+  - `--color-blue` `#007AFF` → `--color-primary` (primary actions, links, focus rings)
+  - `--color-green` `#34C759` → `--color-success`
+  - `--color-red` `#FF3B30` → `--color-danger`
+  - `--color-orange` `#FF9500` → `--color-warning`
+  - `--color-purple` `#AF52DE` → `--color-accent`
+  - `--color-teal` `#30B0C7`, `--color-indigo` `#5856D6`, `--color-pink` `#FF2D55`, `--color-yellow` `#FFCC00` — available for secondary accents (badges, category tags, per-feature identity) so each resource's UI reads as visually distinct rather than one flat blue-on-white app.
+  - Neutrals follow Apple's system gray scale (`--gray-1` darkest … `--gray-6` lightest) for surfaces, borders, and secondary text — never pure black/white.
+- **Light/dark**: every color token has a light value in `:root` and a dark override under `@media (prefers-color-scheme: dark)`, so pages adapt automatically. Don't ship a component that only looks right in one mode.
+- **Type**: `-apple-system, BlinkMacSystemFont, "SF Pro Text", ...` system font stack — no custom webfonts unless a requirement calls for brand typography.
+- **Spacing**: 8pt grid (`--space-1` = 4px through `--space-5` = 32px). Pick from the scale rather than one-off pixel values.
+- **Shape**: generous corner radii (`--radius-sm` 8px / `--radius-md` 12px / `--radius-lg` 18px, per Apple's rounded-rect language) and soft elevation (`--shadow-card`) instead of hard borders.
+- **Color usage rule**: primary actions get a colored gradient/fill (primary → accent or primary → indigo); secondary/tertiary actions stay neutral. Status (success/error) always pairs a semantic color with a left-border accent and matching text color, not color alone. Use a distinct accent color per feature area's page header (e.g. teal for the Passengers list, matching its create-page's primary gradient) so users can tell pages apart at a glance — this is what keeps a growing multi-feature app feeling colorful and navigable rather than uniform gray-on-white.
+
 ## Reservation expiry mechanism
 
 ## Reservation expiry mechanism

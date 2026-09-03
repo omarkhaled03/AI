@@ -87,9 +87,11 @@ export function CreatePassengerPage() {
 
   return (
     <div className={styles.container}>
-      <h1>Create Passenger</h1>
+      <h1 className={styles.title}>Create Passenger</h1>
       <p>
-        <Link to="/passengers">View passengers</Link>
+        <Link to="/passengers" className={styles.backLink}>
+          View passengers
+        </Link>
       </p>
 
       {formError && (

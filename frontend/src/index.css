@@ -1,6 +1,78 @@
+/* Design tokens — Apple Human Interface Guidelines system colors & type scale.
+   https://developer.apple.com/design/human-interface-guidelines/color */
+:root {
+  color-scheme: light dark;
+
+  /* System colors (light) */
+  --color-blue: #007aff;
+  --color-green: #34c759;
+  --color-red: #ff3b30;
+  --color-orange: #ff9500;
+  --color-yellow: #ffcc00;
+  --color-purple: #af52de;
+  --color-pink: #ff2d55;
+  --color-teal: #30b0c7;
+  --color-indigo: #5856d6;
+
+  /* Semantic roles */
+  --color-primary: var(--color-blue);
+  --color-success: var(--color-green);
+  --color-danger: var(--color-red);
+  --color-warning: var(--color-orange);
+  --color-accent: var(--color-purple);
+
+  /* Apple system gray scale (light) */
+  --gray-1: #8e8e93;
+  --gray-2: #aeaeb2;
+  --gray-3: #c7c7cc;
+  --gray-4: #d1d1d6;
+  --gray-5: #e5e5ea;
+  --gray-6: #f2f2f7;
+
+  --bg-canvas: var(--gray-6);
+  --bg-surface: #ffffff;
+  --text-primary: #1c1c1e;
+  --text-secondary: var(--gray-1);
+  --border-subtle: var(--gray-4);
+
+  /* Type */
+  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", system-ui, sans-serif;
+
+  /* 8pt spacing grid */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+
+  /* Corner radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-canvas: #000000;
+    --bg-surface: #1c1c1e;
+    --text-primary: #f2f2f7;
+    --text-secondary: var(--gray-2);
+    --border-subtle: #3a3a3c;
+    --gray-6: #2c2c2e;
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.45);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
-  color: #1a1a1a;
-  background: #f7f7f8;
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  background: var(--bg-canvas);
+  -webkit-font-smoothing: antialiased;
 }
