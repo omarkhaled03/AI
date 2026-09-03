@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // empty' | grep -Eq '(^|/)(scripts|\\.claude|\\.github)(/|$)|(^|/)(\\.env[^/]*|package\\.json|tsconfig[^/]*\\.json|[^/]*\\.config\\.[^/]*)$' && echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Blocked: writes to scripts/, .claude/, .github/, or config files are not allowed\"}}' || echo '{}'"
+          }
+        ]
+      }
+    ]
+  }
+}
