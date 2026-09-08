@@ -6,7 +6,7 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import passengers
+from app.api import passengers, trips
 
 app = FastAPI(title="abcd")
 
@@ -19,3 +19,4 @@ app.add_middleware(
 )
 
 app.include_router(passengers.router)
+app.include_router(trips.router)
