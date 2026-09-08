@@ -48,4 +48,8 @@ All UI work follows Apple's [Human Interface Guidelines](https://developer.apple
 
 Expired holds are not actively pushed anywhere — expiry is checked lazily: whenever remaining capacity for an event is computed, holds past their `expires_at` are treated as released (excluded from the count). A periodic cleanup job may later mark them released in storage, but correctness never depends on that job having run.
 
+## Trip resource (TRV-6)
+
+Second resource added after Passenger, following the same layering (`app/models/trip.py` -> `app/db/models.py::Trip` -> `app/repositories/trip_repository.py` -> `app/services/trip_service.py` -> `app/api/trips.py`, registered in `app/main.py`). Trip has no uniqueness constraint (no DB-level unique index, no `409` case, no `get_by_*` lookup on the repository) — unlike Passenger, whose identity key is `(government_id_type, government_id_number)`. Trip's migration is also the first in this repo generated with a real prior head (`down_revision` pointing at the Passenger migration, `3886e7e238a5`) rather than `down_revision = None`; generate it with `alembic revision --autogenerate -m "..."` against the current head instead of hand-rolling `down_revision`. TRV-8 (Booking) has a hard FK dependency on the `trips` table, so this migration must land and be applied before Booking's migration is written.
+
 _Update this file when a requirement introduces a new component, service boundary, or significant tech choice._
