@@ -35,3 +35,17 @@ class Passenger(Base):
     created_at: Mapped[datetime.datetime] = mapped_column(
         DateTime(timezone=True), server_default=text("clock_timestamp()")
     )
+
+
+class Trip(Base):
+    __tablename__ = "trips"
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+    )
+    destination: Mapped[str] = mapped_column(String(200))
+    departure_date: Mapped[datetime.date] = mapped_column(Date)
+    return_date: Mapped[datetime.date | None] = mapped_column(Date, nullable=True)
+    created_at: Mapped[datetime.datetime] = mapped_column(
+        DateTime(timezone=True), server_default=text("clock_timestamp()")
+    )
