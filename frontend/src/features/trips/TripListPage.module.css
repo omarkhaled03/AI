@@ -1,0 +1,127 @@
+.container {
+  max-width: 720px;
+  margin: var(--space-5) auto;
+  padding: var(--space-4);
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  border-top: 4px solid var(--color-pink);
+}
+
+.title {
+  margin: 0 0 var(--space-2);
+  background: linear-gradient(135deg, var(--color-pink), var(--color-orange));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.createLink {
+  display: inline-block;
+  margin-bottom: var(--space-3);
+  color: #fff;
+  background: linear-gradient(135deg, var(--color-orange), var(--color-pink));
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.createLink:hover {
+  opacity: 0.9;
+}
+
+.searchBar {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.searchBar input {
+  flex: 1;
+  padding: var(--space-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.searchBar input:focus {
+  outline: none;
+  border-color: var(--color-pink);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-pink) 25%, transparent);
+}
+
+.searchBar button {
+  padding: var(--space-2) var(--space-3);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--color-orange);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding: var(--space-2);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--border-subtle);
+}
+
+td {
+  text-align: left;
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--gray-5);
+}
+
+tbody tr:hover {
+  background: var(--gray-6);
+}
+
+.oneWay {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.pagination button {
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--color-pink);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  color: var(--text-secondary);
+}
+
+.errorMessage {
+  background: color-mix(in srgb, var(--color-danger) 12%, var(--bg-surface));
+  color: var(--color-danger);
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-3);
+  border-left: 4px solid var(--color-danger);
+  font-weight: 500;
+}
